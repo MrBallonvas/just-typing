@@ -16,14 +16,15 @@
 
 ## Folders structure
 
-- src
-- - components - folder with modules
-- - static - static sources
-- - utils
-- - views - templates for rendering
-- - router.ts
-- - index.ts
-- - ...
+src
+
+- components - folder with modules
+- static - static sources
+- utils
+- views - templates for rendering
+- router.ts
+- index.ts
+- ...
 
 ### Rules
 

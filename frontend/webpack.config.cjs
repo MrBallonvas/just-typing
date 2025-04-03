@@ -31,7 +31,6 @@ module.exports = {
     static: {
       directory: path.join(__dirname, "dist"),
     },
-    open: false,
     port: 9000,
   },
   resolve: {

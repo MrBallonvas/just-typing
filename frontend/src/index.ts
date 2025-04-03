@@ -1,3 +1,9 @@
 import "./index.css";
-console.log("test message 1");
-console.log("test message 2");
+import * as router from "./router";
+
+// listereners for render content for current route
+window.addEventListener("popstate", router.renderRouteHandler);
+document.addEventListener("DOMContentLoaded", router.renderRouteHandler);
+
+// custom handler for links
+document.addEventListener("click", router.linkListenerHandler);

@@ -14,7 +14,7 @@
   "keywords": [],
   "author": "Vasiliy Shevluk <mrballon@yandex.ru>",
   "license": "ISC",
-  "description": "",
+  "description": "frontend of just-typing project",
   "devDependencies": {
     "@jest/globals": "^29.7.0",
     "copy-webpack-plugin": "^13.0.0",

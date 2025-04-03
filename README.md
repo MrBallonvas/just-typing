@@ -1,8 +1,12 @@
 # Just-typing project
 
-## About project
+## Which problem it solves
 
-Typing trainer with some features:
+These is no good typing trainer with all features that I need.
+
+With this project I want to create one platform which includes all features I need.
+
+### Features I need:
 
 - useful interface
 - timer (15, 30, 60, 120, custom)
@@ -13,13 +17,16 @@ Typing trainer with some features:
 
 ## Tech stack
 
-- Frontend:
-- - TypeScript, CSS, Webpack, Redux
-- Backend:
-- - TypeScript, Fastify
-- Testing:
-- - Jest
+Frontend:
 
-[frontend docs](./frontend.md)
-[backend docs](./backend.md)
-[todos](./todos.md)
+- TypeScript, CSS, Webpack, Redux
+  Backend:
+- TypeScript, Fastify
+  Testing:
+- Jest
+
+## Technical specification
+
+- [Frontend docs](./tech-spec/frontend.md)
+- [Backend docs](./tech-spec/backend.md)
+- [todos](./tech-spec/todos.md)

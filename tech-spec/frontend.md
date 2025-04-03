@@ -30,23 +30,29 @@ src
 
 - if we have reccuring functionality we should move it to utils folder
 
-## Technical specification
+# Technical specification
+
+## Modules
 
 ### Authorization module
 
-Module should interact with authorization backend and authorize. We should create class to communicate with backend that authorize with telegram, google, yandex and GitHub OAuth providers, which we get from backend.
+Module should interact with authorization backend. We should create class to communicate with backend that authorize with telegram, google, yandex and GitHub OAuth providers, which we get from backend.
 
 Class should has:
 
 - method to get an array of providers
 - method to send an OAuth token to backend and save access-token
 - method to update access-token
-- method to delete user
+- method to delete user.
 
 ### Trainer
 
-Module should interact with trainer backend and get text to train typing. We should create a class to communicate with backend that give us text.
+Module should interact with trainer backend and get text to train typing. We should create a class to communicate with backend that give us text. Also it should
 
 Class should has:
 
 - method to get text with special filters which you can find in docs for this backend
+
+## Views
+
+in work

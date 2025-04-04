@@ -20,6 +20,9 @@ jobs:
 
       - name: go to frontend directory
         run: cd ./frontend
+
+      - name: pwd
+        run: pwd
       
       - name: install dependencies
         run: npm install

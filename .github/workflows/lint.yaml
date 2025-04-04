@@ -1,4 +1,4 @@
-name: Lint
+name: Frontend lint
 on:
   workflow_dispatch:
   pull_request:
@@ -17,6 +17,9 @@ jobs:
         uses: actions/setup-node@v4 
         with:
           node-version: 20
+
+      - name: go to frontend directory
+        run: cd ./frontend
       
       - name: install dependencies
         run: npm install

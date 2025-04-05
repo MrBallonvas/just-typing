@@ -1,4 +1,4 @@
-name: Prettier
+name: Frontend formatter
 on:
   workflow_dispatch:
   pull_request:

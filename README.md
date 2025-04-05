@@ -20,14 +20,18 @@ With this project I want to create one platform which includes all features I ne
 Frontend:
 
 - TypeScript, CSS, Webpack, Redux
-  Backend:
+
+Backend:
+
 - TypeScript, Fastify
-  Testing:
+
+Testing:
+
 - Jest
 
 ## Technical specification
 
 - [Frontend docs](./tech-spec/frontend.md)
 - [Backend docs](./tech-spec/backend.md)
-- [todos](./tech-spec/todos.md)
+- [To-do's](./tech-spec/todos.md)
 

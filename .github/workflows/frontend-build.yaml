@@ -31,5 +31,6 @@ jobs:
       - name: make pull-request
         uses: peter-evans/create-pull-request@v7
         with:
+          token: ${{ secrets.PAT }}
           branch: build
           base: dev

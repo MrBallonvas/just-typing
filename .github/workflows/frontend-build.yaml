@@ -43,3 +43,4 @@ jobs:
           token: ${{ secrets.PAT }}
           branch: build-temproary
           base: build
+          delete-branch: true

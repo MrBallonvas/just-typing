@@ -20,4 +20,6 @@ jobs:
           bucket: ${{ secrets.BUCKET }}
           root: ./frontend-build
           include: |
-            *.*
+            *.js
+            *.html
+            **/*

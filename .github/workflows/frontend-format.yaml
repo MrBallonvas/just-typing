@@ -1,4 +1,4 @@
-name: Frontend formatter
+name: Frontend format
 on:
   workflow_dispatch:
   pull_request:

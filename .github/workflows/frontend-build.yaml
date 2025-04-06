@@ -30,10 +30,16 @@ jobs:
       - name: run build
         working-directory: frontend
         run: npm run build
+
+      - name: Move build to output directory
+        run: |
+          mkdir -p output
+          cp -r frontend/dist/* output/
       
       - name: make pull-request
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.PAT }}
-          branch: build
-          base: dev
+          branch: build-temproary/build-{{ github.sha }}
+          base: build
+          path: output

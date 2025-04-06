@@ -35,11 +35,11 @@ jobs:
         run: |
           mkdir -p output
           cp -r frontend/dist/* output/
-          ls -a
       
       - name: make pull-request
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.PAT }}
-          branch: build-temproary/build-{{ github.sha }}
+          branch: build-temproary
           base: build
+          body-path: output

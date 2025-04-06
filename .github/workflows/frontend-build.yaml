@@ -43,4 +43,3 @@ jobs:
           token: ${{ secrets.PAT }}
           branch: build-temproary/build-{{ github.sha }}
           base: build
-          path: output

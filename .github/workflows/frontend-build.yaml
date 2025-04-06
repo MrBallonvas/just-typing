@@ -42,4 +42,3 @@ jobs:
           token: ${{ secrets.PAT }}
           branch: build-temproary
           base: build
-          path: output

@@ -1,10 +1,10 @@
-name: Frontend build
+name: Frontend dev build
 on:
   workflow_dispatch:
   pull_request:
     branches:
-      - main
       - dev
+      - main
 
 jobs:
   build:
@@ -32,4 +32,4 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           branch: build
-
+          base: dev

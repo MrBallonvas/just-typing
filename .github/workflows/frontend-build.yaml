@@ -33,8 +33,9 @@ jobs:
 
       - name: Move build to output directory
         run: |
-          mkdir -p output
-          cp -r frontend/dist/* output/
+          mkdir -p frontend-build
+          cp -r frontend/dist/* frontend-build/
+          rm -rf frontend
       
       - name: make pull-request
         uses: peter-evans/create-pull-request@v7

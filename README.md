@@ -2,7 +2,7 @@
 
 ## Which problem it solves
 
-These is no good typing trainer with all features that I need.
+ I do not find good typing trainer with all features that I need.
 
 With this project I want to create one platform which includes all features I need.
 

@@ -33,6 +33,7 @@ jobs:
           mkdir -p frontend-build
           cp -r frontend/dist/* frontend-build/
           rm -rf frontend
+          rm -rf tech-spec
       
       - name: make pull-request
         uses: peter-evans/create-pull-request@v7

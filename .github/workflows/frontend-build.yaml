@@ -1,13 +1,10 @@
 name: Frontend build
 on:
   workflow_dispatch:
-  pull_request:
-    branches:
-      - dev
-      - main
   push:
     branches:
       - dev
+      - main
 
 jobs:
   build:
@@ -30,10 +27,18 @@ jobs:
       - name: run build
         working-directory: frontend
         run: npm run build
+
+      - name: Move build to output directory
+        run: |
+          mkdir -p frontend-build
+          cp -r frontend/dist/* frontend-build/
+          rm -rf frontend
+          rm -rf tech-spec
       
       - name: make pull-request
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.PAT }}
-          branch: build
-          base: dev
+          branch: build-temproary
+          base: build
+          delete-branch: true

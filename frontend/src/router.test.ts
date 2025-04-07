@@ -1,20 +1,32 @@
-import {describe, test, expect, beforeEach, jest, afterEach} from '@jest/globals'
-import {redirect} from './router'
+import {
+  describe,
+  test,
+  expect,
+  beforeEach,
+  jest,
+  afterEach,
+} from "@jest/globals";
+import { redirect } from "./router";
 
-describe('Router tests', () => {
-	jest.mock('./router')
+describe("Router tests", () => {
+  let win: jest.SpiedFunction<() => void>;
 
-	let win: jest.SpiedFunction<(url: string) => void>
+  beforeEach(() => {
+    win = jest.spyOn(window, "window", "get");
+    document.body.innerHTML = "";
+    history.pushState({}, "", "/");
+  });
+  afterEach(() => {
+    win.mockRestore();
+  });
 
-	beforeEach(() => {
-		win = jest.spyOn(window, 'window', 'get')
-	})
-	afterEach(() => {
-		win.mockRestore()
-	})
+  test("redirect to /test", () => {
+    redirect("/test");
+    expect(window.location.pathname).toBe("/test");
+  });
 
-	test('redirect to /test', () => {
-		redirect('/test')
-		expect(window.location.pathname).toBe('/test')
-	})
-})
+  test("Render route /test", () => {
+    redirect("/test");
+    expect(document.querySelector("body")?.textContent).toBe("Stats");
+  });
+});

@@ -32,6 +32,12 @@ src
 
 # Technical specification
 
+# MVP
+
+PWA application without backend communication
+
+# General
+
 ## Modules
 
 ### Authorization module

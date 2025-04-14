@@ -30,7 +30,7 @@ jobs:
 
       - name: Move build to output directory
         run: |
-          mkdir -p frontend-build
+          mkdir frontend-build
           cp -r frontend/build/* frontend-build/
           rm -rf frontend
           rm -rf tech-spec

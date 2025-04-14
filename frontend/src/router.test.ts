@@ -9,6 +9,6 @@ describe("Router tests", () => {
 
   test("Render route /test", () => {
     redirect("/test");
-    expect(document.querySelector("body")?.textContent).toBe("Stats");
+    expect(document.querySelector("body")?.textContent).toBe("Test");
   });
 });

@@ -26,12 +26,12 @@ jobs:
 
       - name: run build
         working-directory: frontend
-        run: npm run build
+        run: npx webpack --output-path build
 
       - name: Move build to output directory
         run: |
           mkdir -p frontend-build
-          cp -r frontend/dist/* frontend-build/
+          cp -r frontend/build/* frontend-build/
           rm -rf frontend
           rm -rf tech-spec
       

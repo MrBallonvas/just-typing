@@ -1,5 +1,17 @@
 const staticCacheName = "site-static-v1";
-const assets = ["/", "/index.html", "/main.js", "/main.css", "/manifest.json"];
+const assets = [
+  "/",
+  "/index.html",
+  "/main.js",
+  "/main.css",
+  "/manifest.json",
+  "/static/touch/homescreen144.png",
+  "/static/touch/homescreen168.png",
+  "/static/touch/homescreen192.png",
+  "/static/touch/homescreen96.png",
+  "/static/touch/homescreen72.png",
+  "/static/touch/homescreen48.png",
+];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(

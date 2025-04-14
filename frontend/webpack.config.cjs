@@ -12,7 +12,7 @@ module.exports = {
       {
         test: /\.ts?$/,
         use: "ts-loader",
-        exclude: /node_modules/,
+        exclude: [/node_modules/, /sw.ts/],
       },
       {
         test: /\.css$/i,
@@ -21,10 +21,17 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      filename: "./index.html",
+      template: "./index.html",
+    }),
     new MiniCssExtractPlugin(),
     new CopyWebpackPlugin({
-      patterns: [{ from: "src/static", to: "static" }],
+      patterns: [
+        { from: "./src/static", to: "static" },
+        { from: "./src/sw.js", to: "sw.js" },
+        { from: "./manifest.json", to: "manifest.json" },
+      ],
     }),
   ],
   devServer: {

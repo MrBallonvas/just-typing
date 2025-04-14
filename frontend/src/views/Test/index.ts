@@ -1,1 +1,1 @@
-export default "<h1>Stats</h1>";
+export default "<h1>Test</h1>";

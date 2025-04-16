@@ -1,14 +1,14 @@
 import views from "./views";
 
-function redirect(route: string): void {
+function redirect(route: string, qa: string = ""): void {
   window.history.pushState({}, "", route);
-  renderRouteHandler();
+  renderRouteHandler(null, qa);
 }
 
 function linkHandler(event: Event) {
   const target = event.target as HTMLLinkElement;
   redirect(target.href);
-  renderRouteHandler();
+  renderRouteHandler(null, "");
 }
 
 function linkListenerHandler(event: MouseEvent) {
@@ -22,11 +22,17 @@ function linkListenerHandler(event: MouseEvent) {
   }
 }
 
-function renderRouteHandler() {
+function renderRouteHandler(_: null | Event, qa: string = "") {
   const currentPath = window.location.pathname;
   const container = document.querySelector("body");
-  const content = views[currentPath] || views["/"];
 
+  if (window.location.pathname === "/test" && qa === "test") {
+    container?.replaceChildren();
+    container?.insertAdjacentHTML("afterbegin", views["/test"]);
+    return;
+  }
+
+  const content = views[currentPath] || views["/"];
   container?.replaceChildren();
   container?.insertAdjacentHTML("afterbegin", content);
 }

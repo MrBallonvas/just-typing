@@ -1,12 +1,14 @@
 name: Frontend upload build
 on:
   workflow_dispatch:
-  push:
+  pull_request:
+    types: [closed]
     branches:
       - build
 
 jobs:
   upload:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: checkout repository

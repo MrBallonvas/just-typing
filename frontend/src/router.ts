@@ -2,13 +2,13 @@ import views from "./views";
 
 function redirect(route: string, qa: string = ""): void {
   window.history.pushState({}, "", route);
-  renderRouteHandler(qa);
+  renderRouteHandler(null, qa);
 }
 
 function linkHandler(event: Event) {
   const target = event.target as HTMLLinkElement;
   redirect(target.href);
-  renderRouteHandler();
+  renderRouteHandler(null, "");
 }
 
 function linkListenerHandler(event: MouseEvent) {
@@ -22,7 +22,7 @@ function linkListenerHandler(event: MouseEvent) {
   }
 }
 
-function renderRouteHandler(qa: string = "") {
+function renderRouteHandler(_: null | Event, qa: string = "") {
   const currentPath = window.location.pathname;
   const container = document.querySelector("body");
 

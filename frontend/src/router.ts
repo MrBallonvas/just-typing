@@ -1,8 +1,8 @@
 import views from "./views";
 
-function redirect(route: string): void {
+function redirect(route: string, qa: string = ""): void {
   window.history.pushState({}, "", route);
-  renderRouteHandler();
+  renderRouteHandler(qa);
 }
 
 function linkHandler(event: Event) {
@@ -22,11 +22,17 @@ function linkListenerHandler(event: MouseEvent) {
   }
 }
 
-function renderRouteHandler() {
+function renderRouteHandler(qa: string = "") {
   const currentPath = window.location.pathname;
   const container = document.querySelector("body");
-  const content = views[currentPath] || views["/"];
 
+  if (window.location.pathname === "/test" && qa === "test") {
+    container?.replaceChildren();
+    container?.insertAdjacentHTML("afterbegin", views["/test"]);
+    return;
+  }
+
+  const content = views[currentPath] || views["/"];
   container?.replaceChildren();
   container?.insertAdjacentHTML("afterbegin", content);
 }

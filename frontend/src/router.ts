@@ -1,4 +1,4 @@
-import views from "./views";
+import views, { Test } from "./views";
 
 function redirect(route: string, qa: string = ""): void {
   window.history.pushState({}, "", route);
@@ -28,7 +28,7 @@ function renderRouteHandler(_: null | Event, qa: string = "") {
 
   if (window.location.pathname === "/test" && qa === "test") {
     container?.replaceChildren();
-    container?.insertAdjacentHTML("afterbegin", views["/test"]);
+    container?.insertAdjacentHTML("afterbegin", Test);
     return;
   }
 

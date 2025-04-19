@@ -13,7 +13,7 @@ const views: IViews = {
   "/settings": Settings,
   "/stats": Stats,
   "/trainer": Trainer,
-  "/test": Test,
 };
 
 export default views;
+export { Test };

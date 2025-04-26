@@ -3,10 +3,7 @@ import Settings from "./Settings";
 import Stats from "./Stats";
 import Trainer from "./Trainer";
 import Test from "./Test";
-
-interface IViews {
-  [key: string]: string;
-}
+import { IViews } from "./types";
 
 const views: IViews = {
   "/": Home,

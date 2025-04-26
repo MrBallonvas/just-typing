@@ -1,6 +1,9 @@
 import views, { Test } from "./views";
+import { IView } from "./views/types";
 
-function redirect(route: string, qa: string = ""): void {
+let currentView: IView | null = null;
+
+function redirect(route: string, qa: string = "") {
   window.history.pushState({}, "", route);
   renderRouteHandler(null, qa);
 }
@@ -23,18 +26,30 @@ function linkListenerHandler(event: MouseEvent) {
 }
 
 function renderRouteHandler(_: null | Event, qa: string = "") {
+  if (currentView) currentView.unmount();
+
   const currentPath = window.location.pathname;
-  const container = document.querySelector("body");
+  const ViewClass = views[currentPath] ?? views["/"];
+  currentView = new ViewClass();
 
   if (window.location.pathname === "/test" && qa === "test") {
+    const container = document.querySelector("body");
     container?.replaceChildren();
     container?.insertAdjacentHTML("afterbegin", Test);
     return;
   }
 
-  const content = views[currentPath] || views["/"];
-  container?.replaceChildren();
-  container?.insertAdjacentHTML("afterbegin", content);
+  currentView.mount();
 }
 
-export { redirect, renderRouteHandler, linkListenerHandler };
+function routerSetup() {
+  // listereners for render content for current route
+  window.addEventListener("popstate", renderRouteHandler);
+  document.addEventListener("DOMContentLoaded", renderRouteHandler);
+
+  // custom handler for links
+  document.addEventListener("click", linkListenerHandler);
+}
+
+export { redirect, renderRouteHandler };
+export default routerSetup;

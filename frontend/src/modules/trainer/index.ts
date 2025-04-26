@@ -10,7 +10,7 @@ export default class TrainerModule {
     this.originalText = "";
     this.state = "waiting";
     this.onUpdate = () => {};
-    this.boundKeydownHandler = (_: KeyboardEvent) => {};
+    this.boundKeydownHandler = () => {};
 
     this.setupVariables();
   }

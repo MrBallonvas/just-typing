@@ -9,7 +9,7 @@
     "build": "webpack -c ./webpack.config.cjs",
     "watch": "webpack serve",
     "format": "npx prettier . --write",
-    "lint": "npx eslint -f summary './src/**/*.{js,ts}'"
+    "lint": "npx eslint --config ./eslint.config.js -f summary './src/**/*.{js,ts}'"
   },
   "keywords": [],
   "author": "Vasiliy Shevluk <mrballon@yandex.ru>",

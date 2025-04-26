@@ -39,11 +39,10 @@ self.addEventListener("fetch", (evt) => {
     caches.match(evt.request).then((cacheRes) => {
       return (
         cacheRes ||
-        fetch(evt.request).then((fetchRes) => {
-          return caches.open(dynamicCacheName).then((cache) => {
-            cache.put(evt.request.url, fetchRes.clone());
-            return fetchRes;
-          });
+        fetch(evt.request).then(async (fetchRes) => {
+          const cache = await caches.open(dynamicCacheName);
+          cache.put(evt.request.url, fetchRes.clone());
+          return fetchRes;
         })
       );
     }),

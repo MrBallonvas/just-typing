@@ -12,6 +12,9 @@ export default defineConfig([
   {
     rules: {
       "no-console": "warn",
+      "no-console": "off",
+      "no-require-imports": "off",
+      "@typescript-eslint/no-unused-expressions": "off",
     },
   },
 ]);

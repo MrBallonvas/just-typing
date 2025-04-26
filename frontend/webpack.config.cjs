@@ -35,10 +35,18 @@ module.exports = {
     }),
   ],
   devServer: {
+    headers: {
+      "Cache-Control": "no-store",
+    },
     static: {
       directory: path.join(__dirname, "dist"),
+      publicPath: "/",
     },
     port: 9000,
+    historyApiFallback: {
+      disableDotRule: true,
+    },
+    hot: true,
   },
   resolve: {
     extensions: [".ts", ".js"],
@@ -46,5 +54,6 @@ module.exports = {
   output: {
     filename: "[name].js",
     path: path.resolve(__dirname, "dist"),
+    publicPath: "/",
   },
 };

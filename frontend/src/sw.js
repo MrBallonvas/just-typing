@@ -2,8 +2,8 @@ const staticCacheName = "site-static-v1";
 const assets = [
   "/",
   "/index.html",
-  "/main.js",
-  "/main.css",
+  // "/main.js",
+  // "/main.css",
   "/manifest.json",
   "/static/touch/homescreen144.png",
   "/static/touch/homescreen168.png",

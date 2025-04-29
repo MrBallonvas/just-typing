@@ -2,10 +2,10 @@
   "name": "Just-Typing",
   "short_name": "Just-typing is a typing trainer",
   "start_url": ".",
-	"display": "standalone",
+  "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#00CF66",
-	"theme_color": "#00CF66",
+  "theme_color": "#00CF66",
   "description": "Just-typing is a typing trainer with special features",
   "icons": [
     {
@@ -45,4 +45,3 @@
     }
   ]
 }
-

@@ -1,75 +1,83 @@
 export default class TrainerModule {
-  private state: "started" | "waiting";
+  private state: "start" | "wait";
   private text: string;
+  private enteredText: string;
   private originalText: string;
   private boundKeydownHandler: (event: KeyboardEvent) => void;
   private onUpdate: () => void;
 
   constructor() {
     this.text = "";
+    this.enteredText = "";
     this.originalText = "";
-    this.state = "waiting";
+    this.state = "wait";
     this.onUpdate = () => {};
     this.boundKeydownHandler = () => {};
 
-    this.setupVariables();
+    this.setupNewText();
   }
 
-  setOnUpdate(fn: () => void) {
-    this.onUpdate = fn;
-  }
+  setOnUpdate = (fn: () => void) => {
+    this.onUpdate = () => {
+      fn();
+    };
+    console.log("set onUpdate: ", this.onUpdate);
+  };
 
   keydownHandler(event: KeyboardEvent) {
-    console.log(this.state);
-    if (this.state === "started") {
+    if (this.state === "start") {
       if (this.text[0] === event.key) {
+        this.enteredText += this.text[0];
+        this.onUpdate();
+
         this.text = this.text.substring(1);
         if (this.text.length === 0) {
-          this.state = "waiting";
+          this.wait();
+          return;
         }
-        this.onUpdate();
       }
     }
   }
 
-  start() {
-    this.state = "started";
-  }
+  start = () => {
+    this.state = "start";
+    this.setupNewText();
+  };
 
-  wait() {
-    this.state = "waiting";
-  }
+  wait = () => {
+    this.state = "wait";
+  };
 
-  toggleState() {
-    this.state === "started" ? this.wait() : this.start();
-  }
+  toggleState = () => {
+    this.state === "start" ? this.wait() : this.start();
+  };
 
-  setupVariables() {
+  setupNewText = () => {
     const text = this.getText();
     this.text = text;
+    this.enteredText = "";
     this.originalText = text;
-    this.onUpdate = () => {};
     this.boundKeydownHandler = this.keydownHandler.bind(this);
-  }
+  };
 
-  getText() {
+  getText = () => {
     // fetch text then return
     return "i need to make text generator to gen text for tests";
-  }
+  };
 
-  getCurrentSymbol() {
-    return this.text[0];
-  }
+  getEnteredText = () => {
+    return this.enteredText;
+  };
 
-  getOriginalText() {
+  getOriginalText = () => {
     return this.originalText;
-  }
+  };
 
-  removeKeydownListener() {
+  removeKeydownListener = () => {
     document.removeEventListener("keydown", this.boundKeydownHandler);
-  }
+  };
 
-  addKeydownListener() {
+  addKeydownListener = () => {
     document.addEventListener("keydown", this.boundKeydownHandler);
-  }
+  };
 }

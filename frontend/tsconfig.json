@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-		"lib": ["es6", 	"dom", "WebWorker", "ES2020"],
+    "lib": ["es6", "dom", "WebWorker", "ES2020"],
     "outDir": "./dist/",
     "noImplicitAny": true,
     "module": "es6",

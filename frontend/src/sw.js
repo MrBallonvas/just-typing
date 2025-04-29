@@ -1,26 +1,4 @@
-const staticCacheName = "site-static-v1";
-const assets = [
-  "/",
-  "/index.html",
-  // "/main.js",
-  // "/main.css",
-  "/manifest.json",
-  "/static/touch/homescreen144.png",
-  "/static/touch/homescreen168.png",
-  "/static/touch/homescreen192.png",
-  "/static/touch/homescreen96.png",
-  "/static/touch/homescreen72.png",
-  "/static/touch/homescreen48.png",
-];
-
-self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(staticCacheName).then((cache) => {
-      console.log("Caching shell assets");
-      return cache.addAll(assets);
-    }),
-  );
-});
+const dynamicCacheName = "site-dynamic-v1";
 
 self.addEventListener("activate", (evt) => {
   evt.waitUntil(
@@ -35,16 +13,22 @@ self.addEventListener("activate", (evt) => {
 });
 
 self.addEventListener("fetch", (evt) => {
+  if (evt.request.method !== "GET") return;
+
   evt.respondWith(
-    caches.match(evt.request).then((cacheRes) => {
-      return (
-        cacheRes ||
-        fetch(evt.request).then(async (fetchRes) => {
-          const cache = await caches.open(dynamicCacheName);
-          cache.put(evt.request.url, fetchRes.clone());
-          return fetchRes;
-        })
-      );
+    caches.open(dynamicCacheName).then((cache) => {
+      return cache.match(evt.request).then((cachedResponse) => {
+        const fetchPromise = fetch(evt.request)
+          .then((networkResponse) => {
+            cache.put(evt.request, networkResponse.clone());
+            return networkResponse;
+          })
+          .catch(() => {
+            return cachedResponse;
+          });
+
+        return cachedResponse || fetchPromise;
+      });
     }),
   );
 });

@@ -1,0 +1,9 @@
+.input-wrapper {
+  position: relative;
+}
+
+#currentSymbol {
+  color: red;
+  top: 0;
+  position: absolute;
+}

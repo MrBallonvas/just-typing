@@ -1,7 +1,10 @@
 module.exports = {
-	preset: 'ts-jest',
-	testEnvironment: 'jsdom',
-	roots: ['<rootDir>/src'],
-	moduleDirectories: ['node_modules', '<rootDir>/src'],
-	modulePaths: ['<rootDir>/src'],
-}
+  preset: "ts-jest",
+  testEnvironment: "jsdom",
+  roots: ["<rootDir>/src"],
+  moduleDirectories: ["node_modules", "<rootDir>/src"],
+  modulePaths: ["<rootDir>/src"],
+  moduleNameMapper: {
+    "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules",
+  },
+};

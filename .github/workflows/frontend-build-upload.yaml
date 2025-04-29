@@ -36,11 +36,15 @@ jobs:
           cp -r frontend/build/* frontend-build/
           rm -rf frontend
           rm -rf tech-spec
-      
-      - name: make pull-request
-        uses: peter-evans/create-pull-request@v7
+
+      - name: Upload files to Object Storage
+        id: s3-upload
+        uses: yc-actions/yc-obj-storage-upload@v2
         with:
-          token: ${{ secrets.PAT }}
-          branch: build-temproary
-          base: build
-          delete-branch: true
+          yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+          bucket: ${{ secrets.BUCKET }}
+          root: ./frontend-build
+          include: |
+            *.js
+            *.html
+            **/*

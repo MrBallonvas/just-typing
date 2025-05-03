@@ -1,4 +1,4 @@
-name: Frontend build
+name: Frontend build and upload
 on:
   pull_request:
     branches:

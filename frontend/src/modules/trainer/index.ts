@@ -21,7 +21,6 @@ export default class TrainerModule {
     this.onUpdate = () => {
       fn();
     };
-    console.log("set onUpdate: ", this.onUpdate);
   };
 
   keydownHandler(event: KeyboardEvent) {
@@ -32,24 +31,24 @@ export default class TrainerModule {
 
         this.text = this.text.substring(1);
         if (this.text.length === 0) {
-          this.wait();
+          this.setStateWait();
           return;
         }
       }
     }
   }
 
-  start = () => {
+  setStateStart = () => {
     this.state = "start";
     this.setupNewText();
   };
 
-  wait = () => {
+  setStateWait = () => {
     this.state = "wait";
   };
 
   toggleState = () => {
-    this.state === "start" ? this.wait() : this.start();
+    this.state === "start" ? this.setStateWait() : this.setStateStart();
   };
 
   setupNewText = () => {

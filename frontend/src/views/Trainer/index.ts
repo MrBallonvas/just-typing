@@ -18,7 +18,11 @@ class Trainer implements IView {
       console.log("onUpdate called");
       const currentSymbolEl = document.getElementById("currentSymbol");
       if (currentSymbolEl) {
-        currentSymbolEl.textContent = this.trainer.getEnteredText() ?? "_";
+        if (this.trainer.getOriginalText() != this.trainer.getEnteredText()) {
+          currentSymbolEl.textContent = this.trainer.getEnteredText() ?? "_";
+        } else {
+          currentSymbolEl.textContent = "";
+        }
       }
     });
 

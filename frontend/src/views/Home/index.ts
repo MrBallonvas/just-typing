@@ -1,10 +1,11 @@
 import { IView } from "../types";
+
 class Home implements IView {
   mount() {
     console.log("mount home view");
-    const container = document.querySelector("app");
-    container?.replaceChildren();
+    const container = document.getElementById("app");
 
+    container?.replaceChildren();
     container?.insertAdjacentHTML(
       "afterbegin",
       `<h1>Home</h1>
